@@ -1,2 +1,2 @@
 # Kata_Calculator
-Тестовое задание для поступление в Kata Academy
+Тестовое задание для поступления в Kata Academy.

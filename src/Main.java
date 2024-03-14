@@ -5,20 +5,20 @@ import java.util.Scanner;
 class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите арифметическое выражение (например, 2 + 3):");
+        System.out.println("Р’РІРµРґРёС‚Рµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ (РЅР°РїСЂРёРјРµСЂ, 2 + 3):");
         String input = scanner.nextLine();
         scanner.close();
 
         try {
             String result = calc(input);
-            System.out.println("Результат: " + result);
+            System.out.println("Р РµР·СѓР»СЊС‚Р°С‚: " + result);
         } catch (Exception e) {
-            System.out.println("Ошибка: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР°: " + e.getMessage());
         }
     }
 
     static String calc(String input) {
-        // Удаляем пробелы, если есть.
+        // РЈРґР°Р»СЏРµРј РїСЂРѕР±РµР»С‹, РµСЃР»Рё РµСЃС‚СЊ.
         String[] parts = input.replaceAll("\\s+", "").split("");
 
         String operand1 = "";
@@ -35,7 +35,7 @@ class Main {
             operator += parts[1];
             operand2 += parts[2];
         }else
-            throw new IllegalArgumentException("Неправильный формат выражения");
+            throw new IllegalArgumentException("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ РІС‹СЂР°Р¶РµРЅРёСЏ");
 
 
         boolean isRoman = isRomanNumber(operand1) && isRomanNumber(operand2);
@@ -44,7 +44,7 @@ class Main {
         int num2 = isRoman ? romanToDecimal(operand2) : Integer.parseInt(operand2);
 
         if (num1 < 1 || num1 > 10 || num2 < 1 || num2 > 10)
-            throw new IllegalArgumentException("Числа должны быть от 1 до 10 включительно");
+            throw new IllegalArgumentException("Р§РёСЃР»Р° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РѕС‚ 1 РґРѕ 10 РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ");
 
         int result;
         switch (operator) {
@@ -61,12 +61,12 @@ class Main {
                 result = num1 / num2;
                 break;
             default:
-                throw new IllegalArgumentException("Неподдерживаемая операция");
+                throw new IllegalArgumentException("РќРµРїРѕРґРґРµСЂР¶РёРІР°РµРјР°СЏ РѕРїРµСЂР°С†РёСЏ");
         }
 
         if (isRoman) {
             if (result < 1)
-                throw new IllegalArgumentException("Результат не может быть меньше 1");
+                throw new IllegalArgumentException("Р РµР·СѓР»СЊС‚Р°С‚ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 1");
             return decimalToRoman(result);
         } else {
             return String.valueOf(result);
